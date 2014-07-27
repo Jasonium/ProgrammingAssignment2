@@ -6,21 +6,9 @@
 ##  cache the inverse matrix.
 
 
-## The function 'makeCacheMatrix' returns a list containing functions
-##  to:
-##  1.  Set the matrix.
-##  2.  Get the matrix.
-##  3.  Set the inverse of the matrix.
-##  4.  Get the inverse of the matrix.
-##
-##  To use this function to create 'x', issue the R command
-##  x<-makeCacheMatrix().
-##  1.  x$set(matrix(...)) sets the matrix.
-##  2.  x$get() gets displays the matrix.
-##  3.  x$setInverse() should not be used on its own; this should be
-##      used only in conjunction with the function cacheSolve().
-##  4.  x$getInverse() displays the inverse of the matrix once
-##      it has been set by cacheSolve() and returns NULL otherwise.
+##  The function 'makeCacheMatrix' returns a list containing functions
+##  to set the matrix, get the matrix, set the inverse of the matrix, and
+##  get the inverse of the matrix.
 
 makeCacheMatrix <- function(x = matrix()) {
 
@@ -46,16 +34,11 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-##  The function cacheSolve calculates the inverse of the matrix 
-##  stored using the function makeCacheMatrix.  
+##  The function cacheSolve takes a list created by makeCacheMatrix,
+##  returns the inverse from the cache if it has already been computed,
+##  and otherwise computes the inverse and places it in the cache.
+
 ##  ASSUMPTION: matrix set in makeCacheMatrix is invertible!
-##  It takes, as a parameter, the list created by the makeCacheMatrix
-##  function. 
-##  It first checks to see if the inverse has already been computed.  
-##  If so, it retrieves the inverse from the cache and avoids a 
-##  new computation.
-##  Otherwise, it computes the inverse of the matrix and places the 
-##  inverse in the cache via the setInverse function.
 
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
